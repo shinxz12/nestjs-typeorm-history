@@ -26,6 +26,7 @@ export class Author {
 export class Post {
   @PrimaryGeneratedColumn() id!: number;
   @Column() title!: string;
+  @Column({ default: false }) published!: boolean;
   @Column({ type: 'varchar', nullable: true }) draftNotes!: string | null;
   @ManyToOne(() => Author, { nullable: true }) author!: Author | null;
   @DeleteDateColumn() deletedAt!: Date | null;

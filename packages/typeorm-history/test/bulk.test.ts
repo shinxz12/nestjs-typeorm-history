@@ -36,6 +36,21 @@ describe('bulk helpers', () => {
     expect(((await ds.getRepository('post_history').find()) as any[]).length).toBe(before);
   });
 
+  it('bulkUpdateWithHistory snapshots boolean updates from the updated row', async () => {
+    const [post] = await ds.manager.save(Post, [{ title: 'publish-me' }]);
+
+    const result = await bulkUpdateWithHistory(ds.getRepository(Post), { title: 'publish-me' }, { published: true } as any);
+
+    expect(result.affected).toBe(1);
+    await expect(ds.getRepository(Post).findOneByOrFail({ id: post.id })).resolves.toMatchObject({ published: true });
+    const rows = (await ds.getRepository('post_history').find({
+      where: { id: post.id } as any,
+      order: { history_id: 'DESC' } as any,
+    })) as any[];
+    expect(rows[0].history_type).toBe('update');
+    expect(rows[0].published).toBe(true);
+  });
+
   it("bulkDeleteWithHistory deletes rows and records 'delete' snapshots", async () => {
     const result = await bulkDeleteWithHistory(ds.getRepository(Post), { title: 'b' });
     expect(result.affected).toBe(1);

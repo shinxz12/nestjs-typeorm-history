@@ -30,6 +30,22 @@ function selectRawByIds(
     .getRawMany();
 }
 
+function normalizeRawRowsForHistoryInsert(
+  em: EntityManager,
+  metadata: EntityMetadata,
+  entry: RegistryEntry,
+  rows: Record<string, unknown>[],
+): Record<string, unknown>[] {
+  return rows.map((row) => {
+    const normalized = { ...row };
+    for (const col of metadata.columns) {
+      if (!entry.trackedDbNames!.has(col.databaseName) || col.transformer) continue;
+      normalized[col.databaseName] = em.connection.driver.prepareHydratedValue(row[col.databaseName], col);
+    }
+    return normalized;
+  });
+}
+
 /**
  * Updates every row matching `criteria` and writes one `'update'` history row
  * per affected entity, in a single transaction. Plain
@@ -48,7 +64,7 @@ export async function bulkUpdateWithHistory<T extends ObjectLiteral>(
     if (matched.length === 0) return { affected: 0 };
     const ids = matched.map((m) => (m as any)[pkProp]);
     await em.update(repo.target, { [pkProp]: In(ids) } as any, patch);
-    const rawRows = await selectRawByIds(em, repo.metadata, ids);
+    const rawRows = normalizeRawRowsForHistoryInsert(em, repo.metadata, entry, await selectRawByIds(em, repo.metadata, ids));
     await writeHistoryRowsRaw('update', entry, rawRows, em);
     return { affected: rawRows.length };
   });
@@ -69,7 +85,7 @@ export async function bulkDeleteWithHistory<T extends ObjectLiteral>(
     const matched = await em.find(repo.target, { where: criteria });
     if (matched.length === 0) return { affected: 0 };
     const ids = matched.map((m) => (m as any)[pkProp]);
-    const rawRows = await selectRawByIds(em, repo.metadata, ids);
+    const rawRows = normalizeRawRowsForHistoryInsert(em, repo.metadata, entry, await selectRawByIds(em, repo.metadata, ids));
     await em.delete(repo.target, { [pkProp]: In(ids) } as any);
     await writeHistoryRowsRaw('delete', entry, rawRows, em);
     return { affected: matched.length };
@@ -98,7 +114,7 @@ export async function bulkSoftDeleteWithHistory<T extends ObjectLiteral>(
     await em.softDelete(repo.target, { [pkProp]: In(ids) } as any);
     // Reselect after the soft delete so the history row carries the
     // populated delete-date column.
-    const rawRows = await selectRawByIds(em, repo.metadata, ids);
+    const rawRows = normalizeRawRowsForHistoryInsert(em, repo.metadata, entry, await selectRawByIds(em, repo.metadata, ids));
     await writeHistoryRowsRaw('delete', entry, rawRows, em);
     return { affected: matched.length };
   });
@@ -125,7 +141,7 @@ export async function bulkRestoreWithHistory<T extends ObjectLiteral>(
     if (matched.length === 0) return { affected: 0 };
     const ids = matched.map((m) => (m as any)[pkProp]);
     await em.restore(repo.target, { [pkProp]: In(ids) } as any);
-    const rawRows = await selectRawByIds(em, repo.metadata, ids);
+    const rawRows = normalizeRawRowsForHistoryInsert(em, repo.metadata, entry, await selectRawByIds(em, repo.metadata, ids));
     await writeHistoryRowsRaw('update', entry, rawRows, em);
     return { affected: matched.length };
   });

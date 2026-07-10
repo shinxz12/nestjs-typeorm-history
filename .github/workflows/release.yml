@@ -32,3 +32,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          # setup-node's registry-url writes an .npmrc that reads NODE_AUTH_TOKEN,
+          # which is what `pnpm -r publish` actually authenticates with
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

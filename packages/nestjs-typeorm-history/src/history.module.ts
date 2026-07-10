@@ -2,7 +2,7 @@ import { DynamicModule, ExecutionContext, Module, Provider } from '@nestjs/commo
 import { APP_INTERCEPTOR } from '@nestjs/core';
 import { getDataSourceToken } from '@nestjs/typeorm';
 import { DataSource } from 'typeorm';
-import { historyRepo } from 'typeorm-entity-history';
+import { historyRepo } from '@entity-history/typeorm';
 import { HistoryContextInterceptor } from './history-context.interceptor';
 import { getHistoryRepositoryToken, HISTORY_MODULE_OPTIONS, HistoryDataSourceRef } from './tokens';
 
@@ -13,7 +13,7 @@ export interface HistoryModuleOptions {
 }
 
 /**
- * NestJS integration for `typeorm-entity-history`. `forRoot()` installs a
+ * NestJS integration for `@entity-history/typeorm`. `forRoot()` installs a
  * global interceptor that attributes every request's writes to
  * `userResolver`'s result; `forFeature()` provides an injectable
  * `HistoryRepository` per entity via {@link InjectHistoryRepository}.

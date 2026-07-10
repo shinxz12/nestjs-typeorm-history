@@ -5,10 +5,10 @@ import { Test } from '@nestjs/testing';
 import { TypeOrmModule, getDataSourceToken } from '@nestjs/typeorm';
 import request from 'supertest';
 import { Column, DataSource, Entity, PrimaryGeneratedColumn } from 'typeorm';
-import { Historized, historyEntities, HistorySubscriber } from 'typeorm-entity-history';
+import { Historized, historyEntities, HistorySubscriber } from '@entity-history/typeorm';
 import { HistoryModule } from '../src/history.module';
 import { InjectHistoryRepository } from '../src/tokens';
-import type { HistoryRepository } from 'typeorm-entity-history';
+import type { HistoryRepository } from '@entity-history/typeorm';
 
 @Entity()
 @Historized()

@@ -1,6 +1,6 @@
 {
-  "name": "typeorm-entity-history",
-  "version": "0.1.0",
+  "name": "@entity-history/typeorm",
+  "version": "0.2.0",
   "description": "Shadow-table entity history (audit trail) for TypeORM",
   "license": "MIT",
   "repository": {

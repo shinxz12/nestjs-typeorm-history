@@ -44,6 +44,9 @@ importers:
 
   packages/nestjs-typeorm-history:
     devDependencies:
+      '@entity-history/typeorm':
+        specifier: workspace:*
+        version: link:../typeorm-history
       '@nestjs/common':
         specifier: ^11.0.0
         version: 11.1.28(reflect-metadata@0.2.2)(rxjs@7.8.2)
@@ -83,9 +86,6 @@ importers:
       typeorm:
         specifier: ^0.3.20
         version: 0.3.30(better-sqlite3@11.10.0)(pg@8.22.0)(ts-node@10.9.2(@swc/core@1.15.43)(@types/node@22.20.1)(typescript@5.9.3))
-      typeorm-entity-history:
-        specifier: workspace:*
-        version: link:../typeorm-history
       typescript:
         specifier: ^5.5.0
         version: 5.9.3

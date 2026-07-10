@@ -13,7 +13,7 @@ const als = new AsyncLocalStorage<HistoryContext>();
  * row written during `fn` (including in nested async calls) is attributed
  * to `ctx.userId`/`ctx.changeReason`. Use this outside HTTP requests (cron
  * jobs, queue consumers, scripts) — inside a NestJS request, the
- * `HistoryContextInterceptor` from `nestjs-typeorm-history` sets this
+ * `HistoryContextInterceptor` from `@entity-history/nestjs-typeorm` sets this
  * automatically per request.
  */
 export function withHistoryContext<T>(ctx: HistoryContext, fn: () => T): T {

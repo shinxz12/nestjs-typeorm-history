@@ -14,7 +14,7 @@ Both `typeorm-entity-history` and `nestjs-typeorm-history` follow this policy.
 
 Instead, use one of these private channels:
 
-- **GitHub private vulnerability reporting** (preferred): [Report a vulnerability](https://github.com/shinxz12/nestjs-typeorm-history/security/advisories/new)
+- **GitHub private vulnerability reporting** (preferred): [Report a vulnerability](https://github.com/shinxz12/entity-history/security/advisories/new)
 - **Email**: ngocbthe@gmail.com
 
 Include as much of the following as you can: affected package and version, a description of the issue and its impact, and steps or a proof-of-concept to reproduce it.

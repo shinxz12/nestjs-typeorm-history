@@ -1,6 +1,6 @@
 # Publishing
 
-Versioning and npm publishing are automated by [Changesets](https://github.com/changesets/changesets) via `.github/workflows/release.yml`. This file documents the one-time GitHub setup (already done for github.com/shinxz12/nestjs-typeorm-history) and the day-to-day release flow.
+Versioning and npm publishing are automated by [Changesets](https://github.com/changesets/changesets) via `.github/workflows/release.yml`. This file documents the one-time GitHub setup (already done for github.com/shinxz12/entity-history) and the day-to-day release flow.
 
 ## One-time setup (done 2026-07-10)
 

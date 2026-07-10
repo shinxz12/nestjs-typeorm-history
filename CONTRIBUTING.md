@@ -39,7 +39,7 @@ Releases are fully automated via [Changesets](https://github.com/changesets/chan
 
 ## Reporting bugs and requesting features
 
-Use the [issue templates](https://github.com/shinxz12/nestjs-typeorm-history/issues/new/choose). For security issues, see [SECURITY.md](SECURITY.md) — please don't open a public issue.
+Use the [issue templates](https://github.com/shinxz12/entity-history/issues/new/choose). For security issues, see [SECURITY.md](SECURITY.md) — please don't open a public issue.
 
 ## Code of conduct
 

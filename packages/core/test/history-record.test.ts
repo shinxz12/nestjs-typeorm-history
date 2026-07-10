@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { HistoryRecord } from '../src/repository/history-record';
+import { HistoryRecord } from '../src/history-record';
 
 const rec = (raw: Record<string, any>) => new HistoryRecord(raw, ['val']);
 

@@ -1,15 +1,13 @@
-import 'reflect-metadata';
 import { describe, expect, it } from 'vitest';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-import { Historized } from '../src/decorators/historized';
-import { getHistorizedEntry, listHistorized } from '../src/metadata/registry';
+import { Historized } from '../src/historized';
+import { getHistorizedEntry, listHistorized } from '../src/registry';
 
-@Entity()
+// The registry is ORM-agnostic: plain classes suffice, no entity decorators.
 @Historized({ exclude: ['secret'], trackSoftDelete: true })
 class Doc {
-  @PrimaryGeneratedColumn() id!: number;
-  @Column() title!: string;
-  @Column() secret!: string;
+  id!: number;
+  title!: string;
+  secret!: string;
 }
 
 describe('registry', () => {

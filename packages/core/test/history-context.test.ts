@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { getHistoryContext, setChangeReason, withHistoryContext } from '../src/context/history-context';
+import { getHistoryContext, setChangeReason, withHistoryContext } from '../src/history-context';
 
 describe('history context', () => {
   it('is undefined outside a context', () => {

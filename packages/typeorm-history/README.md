@@ -1,11 +1,13 @@
-# typeorm-entity-history
+# @entity-history/typeorm
+
+> Renamed from `typeorm-entity-history` (deprecated on npm).
 
 Entity history for TypeORM: every insert/update/delete on a tracked entity writes a full snapshot to a per-entity shadow table (`<table>_history`), with user attribution, change reasons, time-travel queries, diffing, and revert.
 
 ## Install
 
 ```bash
-npm install typeorm-entity-history
+npm install @entity-history/typeorm
 ```
 
 Requires `typeorm >= 0.3.20` as a peer dependency.
@@ -14,7 +16,7 @@ Requires `typeorm >= 0.3.20` as a peer dependency.
 
 ```typescript
 import { Column, DataSource, Entity, PrimaryGeneratedColumn } from 'typeorm';
-import { Historized, historyEntities, HistorySubscriber } from 'typeorm-entity-history';
+import { Historized, historyEntities, HistorySubscriber } from '@entity-history/typeorm';
 
 @Entity()
 @Historized()
@@ -47,7 +49,7 @@ export const dataSource = new DataSource({
 ## Context: user attribution and change reasons
 
 ```typescript
-import { withHistoryContext } from 'typeorm-entity-history';
+import { withHistoryContext } from '@entity-history/typeorm';
 
 await withHistoryContext({ userId: 'system', changeReason: 'nightly sync' }, async () => {
   await repo.save(entity);
@@ -59,7 +61,7 @@ Missing context is not an error — `history_user_id` and `history_change_reason
 ## Query API
 
 ```typescript
-import { historyRepo } from 'typeorm-entity-history';
+import { historyRepo } from '@entity-history/typeorm';
 
 const history = historyRepo(dataSource, User);
 
@@ -105,7 +107,7 @@ import {
   bulkDeleteWithHistory,
   bulkSoftDeleteWithHistory,
   bulkRestoreWithHistory,
-} from 'typeorm-entity-history';
+} from '@entity-history/typeorm';
 
 await bulkUpdateWithHistory(repo, { status: 'draft' }, { status: 'archived' });
 await bulkDeleteWithHistory(repo, { status: 'spam' });

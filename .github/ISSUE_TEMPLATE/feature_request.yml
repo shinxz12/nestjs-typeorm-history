@@ -7,8 +7,8 @@ body:
     attributes:
       label: Package
       options:
-        - typeorm-entity-history (core)
-        - nestjs-typeorm-history (NestJS wrapper)
+        - "@entity-history/typeorm (TypeORM adapter)"
+        - "@entity-history/nestjs-typeorm (NestJS wrapper)"
         - both / unsure
     validations:
       required: true

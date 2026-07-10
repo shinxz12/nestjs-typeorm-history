@@ -1,16 +1,20 @@
-# typeorm-entity-history
+# entity-history
 
 [![CI](https://github.com/shinxz12/entity-history/actions/workflows/ci.yml/badge.svg)](https://github.com/shinxz12/entity-history/actions/workflows/ci.yml)
-[![npm (core)](https://img.shields.io/npm/v/typeorm-entity-history?label=typeorm-entity-history)](https://www.npmjs.com/package/typeorm-entity-history)
-[![npm (nestjs)](https://img.shields.io/npm/v/nestjs-typeorm-history?label=nestjs-typeorm-history)](https://www.npmjs.com/package/nestjs-typeorm-history)
+[![npm (typeorm)](https://img.shields.io/npm/v/@entity-history/typeorm?label=%40entity-history%2Ftypeorm)](https://www.npmjs.com/package/@entity-history/typeorm)
+[![npm (nestjs)](https://img.shields.io/npm/v/@entity-history/nestjs-typeorm?label=%40entity-history%2Fnestjs-typeorm)](https://www.npmjs.com/package/@entity-history/nestjs-typeorm)
 [![license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 Entity history for TypeORM and NestJS: every insert/update/delete on a tracked entity writes a full snapshot to a per-entity shadow table (`<table>_history`), with user attribution, change reasons, time-travel queries, diffing, and revert.
 
+> Renamed from `typeorm-entity-history` / `nestjs-typeorm-history` — the old npm names are deprecated and point here.
+
 | Package | Description |
 |---|---|
-| [`typeorm-entity-history`](packages/typeorm-history) | Core: decorator, subscriber, query API. Usable standalone without NestJS. |
-| [`nestjs-typeorm-history`](packages/nestjs-typeorm-history) | NestJS module: request-scoped user attribution, DI-friendly history repositories. |
+| [`@entity-history/core`](packages/core) | ORM-agnostic core: `@Historized` registry, history context, diffing. |
+| [`@entity-history/typeorm`](packages/typeorm-history) | TypeORM adapter: decorator, subscriber, query API. Usable standalone without NestJS. |
+| [`@entity-history/nestjs-typeorm`](packages/nestjs-typeorm-history) | NestJS module: request-scoped user attribution, DI-friendly history repositories. |
+| `@entity-history/mikroorm` | MikroORM adapter — coming soon. |
 
 ## Features
 
@@ -24,12 +28,12 @@ Entity history for TypeORM and NestJS: every insert/update/delete on a tracked e
 ## Quick start (TypeORM, no NestJS)
 
 ```bash
-npm install typeorm-entity-history   # peer: typeorm >= 0.3.20
+npm install @entity-history/typeorm   # peer: typeorm >= 0.3.20
 ```
 
 ```typescript
 import { Column, DataSource, Entity, PrimaryGeneratedColumn } from 'typeorm';
-import { Historized, historyEntities, HistorySubscriber } from 'typeorm-entity-history';
+import { Historized, historyEntities, HistorySubscriber } from '@entity-history/typeorm';
 
 @Entity()
 @Historized()
@@ -48,7 +52,7 @@ export const dataSource = new DataSource({
 Every `save`/`remove` on `User` now also writes a row to `user_history`. Attribute writes to a user with `withHistoryContext`:
 
 ```typescript
-import { withHistoryContext } from 'typeorm-entity-history';
+import { withHistoryContext } from '@entity-history/typeorm';
 
 await withHistoryContext({ userId: 'admin-7', changeReason: 'GDPR request' }, async () => {
   await dataSource.getRepository(User).save(user);
@@ -58,7 +62,7 @@ await withHistoryContext({ userId: 'admin-7', changeReason: 'GDPR request' }, as
 ### Query the history
 
 ```typescript
-import { historyRepo } from 'typeorm-entity-history';
+import { historyRepo } from '@entity-history/typeorm';
 
 const history = historyRepo(dataSource, User);
 
@@ -72,14 +76,14 @@ await history.forEntity(userId).revertTo(historyId);  // restore a previous vers
 ## Quick start (NestJS)
 
 ```bash
-npm install nestjs-typeorm-history typeorm-entity-history
+npm install @entity-history/nestjs-typeorm @entity-history/typeorm
 ```
 
 ```typescript
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { historyEntities, HistorySubscriber } from 'typeorm-entity-history';
-import { HistoryModule } from 'nestjs-typeorm-history';
+import { historyEntities, HistorySubscriber } from '@entity-history/typeorm';
+import { HistoryModule } from '@entity-history/nestjs-typeorm';
 import { User } from './user.entity';
 
 @Module({
@@ -101,8 +105,8 @@ export class AppModule {}
 
 ```typescript
 import { Injectable } from '@nestjs/common';
-import { InjectHistoryRepository } from 'nestjs-typeorm-history';
-import { HistoryRepository } from 'typeorm-entity-history';
+import { InjectHistoryRepository } from '@entity-history/nestjs-typeorm';
+import { HistoryRepository } from '@entity-history/typeorm';
 import { User } from './user.entity';
 
 @Injectable()
@@ -117,8 +121,8 @@ export class UserService {
 
 ## Going further
 
-- [`typeorm-entity-history` README](packages/typeorm-history/README.md) — `@Historized` options (exclude columns, soft-delete tracking), relations (one-to-many, many-to-many via join entity), bulk helpers, migrations, v1 limitations.
-- [`nestjs-typeorm-history` README](packages/nestjs-typeorm-history/README.md) — multiple data sources, usage outside HTTP requests (cron, queues).
+- [`@entity-history/typeorm` README](packages/typeorm-history/README.md) — `@Historized` options (exclude columns, soft-delete tracking), relations (one-to-many, many-to-many via join entity), bulk helpers, migrations, v1 limitations.
+- [`@entity-history/nestjs-typeorm` README](packages/nestjs-typeorm-history/README.md) — multiple data sources, usage outside HTTP requests (cron, queues).
 - [API reference](https://shinxz12.github.io/entity-history/) — generated TypeDoc for both packages.
 
 ## Development
@@ -126,7 +130,7 @@ export class UserService {
 ```bash
 pnpm install
 pnpm test               # both packages, in-memory sqlite
-pnpm -F typeorm-entity-history test:pg   # postgres integration suite (requires Docker)
+pnpm -F @entity-history/typeorm test:pg   # postgres integration suite (requires Docker)
 pnpm build               # build both packages
 ```
 

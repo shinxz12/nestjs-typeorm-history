@@ -23,8 +23,7 @@ jobs:
           cache: pnpm
           registry-url: https://registry.npmjs.org
       - run: pnpm install --frozen-lockfile
-      - run: pnpm -F typeorm-entity-history build
-      - run: pnpm -F nestjs-typeorm-history build
+      - run: pnpm -r build
       - uses: changesets/action@v1
         with:
           # `changeset publish` (not `pnpm -r publish`) so the action can parse

@@ -1,8 +1,8 @@
 blank_issues_enabled: true
 contact_links:
   - name: Question / discussion
-    url: https://github.com/shinxz12/nestjs-typeorm-history/discussions
+    url: https://github.com/shinxz12/entity-history/discussions
     about: Ask usage questions or discuss ideas before filing an issue
   - name: Security vulnerability
-    url: https://github.com/shinxz12/nestjs-typeorm-history/security/advisories/new
+    url: https://github.com/shinxz12/entity-history/security/advisories/new
     about: Please report security issues privately, not as public issues

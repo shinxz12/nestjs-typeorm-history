@@ -1,6 +1,6 @@
 # typeorm-entity-history
 
-[![CI](https://github.com/shinxz12/nestjs-typeorm-history/actions/workflows/ci.yml/badge.svg)](https://github.com/shinxz12/nestjs-typeorm-history/actions/workflows/ci.yml)
+[![CI](https://github.com/shinxz12/entity-history/actions/workflows/ci.yml/badge.svg)](https://github.com/shinxz12/entity-history/actions/workflows/ci.yml)
 [![npm (core)](https://img.shields.io/npm/v/typeorm-entity-history?label=typeorm-entity-history)](https://www.npmjs.com/package/typeorm-entity-history)
 [![npm (nestjs)](https://img.shields.io/npm/v/nestjs-typeorm-history?label=nestjs-typeorm-history)](https://www.npmjs.com/package/nestjs-typeorm-history)
 [![license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
@@ -119,7 +119,7 @@ export class UserService {
 
 - [`typeorm-entity-history` README](packages/typeorm-history/README.md) — `@Historized` options (exclude columns, soft-delete tracking), relations (one-to-many, many-to-many via join entity), bulk helpers, migrations, v1 limitations.
 - [`nestjs-typeorm-history` README](packages/nestjs-typeorm-history/README.md) — multiple data sources, usage outside HTTP requests (cron, queues).
-- [API reference](https://shinxz12.github.io/nestjs-typeorm-history/) — generated TypeDoc for both packages.
+- [API reference](https://shinxz12.github.io/entity-history/) — generated TypeDoc for both packages.
 
 ## Development
 

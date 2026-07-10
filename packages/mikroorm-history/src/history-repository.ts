@@ -54,7 +54,7 @@ export class HistoryRepository<T extends object> {
         `${ERR} HistorySubscriber is not registered. Fix: MikroORM.init({ ..., subscribers: [new HistorySubscriber()] })`,
       );
     validateEntry(em, this.entry);
-    this.sourceMeta = this.em.getMetadata().get(target.name);
+    this.sourceMeta = (this.em.getMetadata() as any).get(target.name);
     this.tracked = [...this.entry.trackedDbNames!];
     this.shadowName = shadowNameOf(this.entry);
   }
@@ -170,7 +170,7 @@ export class EntityHistoryQuery<T extends object> {
     const prop = this.repo.sourceMeta.properties[name];
     if (!prop || prop.kind === ReferenceKind.SCALAR)
       throw new Error(`${ERR} unknown relation '${name}' on ${this.repo.target.name}.`);
-    const relatedTarget = this.repo.em.getMetadata().get(prop.type).class as EntityClass<any>;
+    const relatedTarget = (this.repo.em.getMetadata() as any).get(prop.type).class as EntityClass<any>;
     let relatedRepo: HistoryRepository<any>;
     try {
       relatedRepo = new HistoryRepository(this.repo.em, relatedTarget);
@@ -184,11 +184,11 @@ export class EntityHistoryQuery<T extends object> {
       const fk = raw[prop.fieldNames[0]];
       (entity as any)[name] = fk == null ? null : await relatedRepo.forEntity(fk).asOf(date);
     } else if (prop.kind === ReferenceKind.ONE_TO_MANY) {
-      const childMeta = this.repo.em.getMetadata().get(prop.type);
+      const childMeta = (this.repo.em.getMetadata() as any).get(prop.type);
       const childFkDb = childMeta.properties[prop.mappedBy].fieldNames[0];
       (entity as any)[name] = await relatedRepo.asOf(date, { [childFkDb]: this.pk });
     } else if (prop.kind === ReferenceKind.ONE_TO_ONE && prop.mappedBy) {
-      const ownerMeta = this.repo.em.getMetadata().get(prop.type);
+      const ownerMeta = (this.repo.em.getMetadata() as any).get(prop.type);
       const ownerFkDb = ownerMeta.properties[prop.mappedBy].fieldNames[0];
       const matches = await relatedRepo.asOf(date, { [ownerFkDb]: this.pk });
       (entity as any)[name] = matches[0] ?? null;

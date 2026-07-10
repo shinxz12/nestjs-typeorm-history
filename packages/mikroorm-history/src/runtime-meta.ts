@@ -12,7 +12,7 @@ const metaCols = new Set<string>(Object.values(META));
  */
 export function validateEntry(em: EntityManager, entry: MikroEntry): void {
   if (validated.has(entry)) return;
-  const sourceMeta = em.getMetadata().get(entry.target.name);
+  const sourceMeta = (em.getMetadata() as any).get(entry.target.name);
   const actual = new Set<string>();
   for (const prop of Object.values(sourceMeta.properties) as any[]) {
     for (const f of prop.fieldNames ?? []) actual.add(f);

@@ -7,9 +7,7 @@ import {
   ReflectMetadataProvider,
 } from '@mikro-orm/decorators/legacy';
 import { MikroORM, Options } from '@mikro-orm/sqlite';
-import { Historized } from '@entity-history/core';
-import { historyEntities } from '../../src/history-entity-factory';
-import { HistorySubscriber } from '../../src/history-subscriber';
+import { Historized, historyEntities, HistorySubscriber } from '../../src';
 
 @Historized()
 @Entity()

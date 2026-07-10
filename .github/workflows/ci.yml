@@ -32,3 +32,4 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm -r build
       - run: pnpm -F @entity-history/typeorm test:pg
+      - run: pnpm -F @entity-history/mikroorm test:pg

@@ -6,7 +6,7 @@ import { validateEntry } from './runtime-meta';
 
 /** Builds the flat raw row (db column names) for one entity from its in-memory state. */
 export function snapshotOf(em: EntityManager, entry: MikroEntry, entity: any): Record<string, unknown> {
-  const meta = em.getMetadata().get(entry.target.name);
+  const meta = (em.getMetadata() as any).get(entry.target.name);
   const row: Record<string, unknown> = {};
   for (const prop of Object.values(meta.properties) as any[]) {
     const dbName = prop.fieldNames?.[0];
@@ -15,7 +15,7 @@ export function snapshotOf(em: EntityManager, entry: MikroEntry, entity: any): R
     if (v != null && prop.kind !== ReferenceKind.SCALAR) {
       // Relation: store the referenced pk. Unwrap Reference wrappers.
       const target = typeof v.unwrap === 'function' ? v.unwrap() : v;
-      const refPk = em.getMetadata().get(prop.type).primaryKeys[0];
+      const refPk = (em.getMetadata() as any).get(prop.type).primaryKeys[0];
       v = target?.[refPk];
     }
     row[dbName] = v === undefined ? null : v;

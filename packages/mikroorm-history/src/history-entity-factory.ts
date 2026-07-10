@@ -70,7 +70,9 @@ function buildSchemaFor(entry: RegistryEntry, opts: HistoryEntitiesOptions): Ent
     const kind = prop.kind ?? ReferenceKind.SCALAR;
 
     if (kind === ReferenceKind.SCALAR) {
-      const dbName = prop.fieldNames?.[0] ?? naming.propertyToColumnName(prop.name);
+      // Pre-init an explicit `fieldName` option sits on prop.fieldName; the
+      // fieldNames array is only populated during discovery.
+      const dbName = prop.fieldNames?.[0] ?? prop.fieldName ?? naming.propertyToColumnName(prop.name);
       // History rows are point-in-time snapshots: never enforce the source
       // table's NOT NULL (constraints are stripped, per design).
       properties[dbName] = {
@@ -85,7 +87,7 @@ function buildSchemaFor(entry: RegistryEntry, opts: HistoryEntitiesOptions): Ent
       }
     } else if (OWNING.has(kind) && !prop.mappedBy) {
       // FK column of an owning relation (many-to-one, one-to-one owner).
-      const dbName = prop.fieldNames?.[0] ?? naming.joinColumnName(prop.name);
+      const dbName = prop.fieldNames?.[0] ?? prop.fieldName ?? naming.joinColumnName(prop.name);
       properties[dbName] = { type: fkType(prop), fieldName: dbName, nullable: true };
       tracked.add(dbName);
       fkDbNames.push(dbName);

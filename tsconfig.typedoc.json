@@ -1,0 +1,7 @@
+{
+  "extends": "./tsconfig.base.json",
+  "include": [
+    "packages/typeorm-history/src",
+    "packages/nestjs-typeorm-history/src"
+  ]
+}

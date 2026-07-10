@@ -88,6 +88,63 @@ importers:
         specifier: ^3.2.6
         version: 3.2.6(@types/node@22.20.1)(yaml@2.9.0)
 
+  packages/nestjs-mikroorm-history:
+    devDependencies:
+      '@entity-history/mikroorm':
+        specifier: workspace:*
+        version: link:../mikroorm-history
+      '@mikro-orm/core':
+        specifier: ^7.1.5
+        version: 7.1.5
+      '@mikro-orm/decorators':
+        specifier: ^7.1.5
+        version: 7.1.5(@mikro-orm/core@7.1.5)(reflect-metadata@0.2.2)
+      '@mikro-orm/nestjs':
+        specifier: ^7.0.2
+        version: 7.0.2(@mikro-orm/core@7.1.5)(@nestjs/common@11.1.28(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.1.28)(reflect-metadata@0.2.2)
+      '@mikro-orm/sqlite':
+        specifier: ^7.1.5
+        version: 7.1.5(@mikro-orm/core@7.1.5)
+      '@nestjs/common':
+        specifier: ^11.0.0
+        version: 11.1.28(reflect-metadata@0.2.2)(rxjs@7.8.2)
+      '@nestjs/core':
+        specifier: ^11.0.0
+        version: 11.1.28(@nestjs/common@11.1.28(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/platform-express@11.1.28)(reflect-metadata@0.2.2)(rxjs@7.8.2)
+      '@nestjs/platform-express':
+        specifier: ^11.0.0
+        version: 11.1.28(@nestjs/common@11.1.28(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.1.28)
+      '@nestjs/testing':
+        specifier: ^11.0.0
+        version: 11.1.28(@nestjs/common@11.1.28(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.1.28)(@nestjs/platform-express@11.1.28)
+      '@swc/core':
+        specifier: ^1.7.0
+        version: 1.15.43
+      '@types/supertest':
+        specifier: ^7.2.0
+        version: 7.2.0
+      reflect-metadata:
+        specifier: ^0.2.2
+        version: 0.2.2
+      rxjs:
+        specifier: ^7.8.0
+        version: 7.8.2
+      supertest:
+        specifier: ^7.0.0
+        version: 7.2.2
+      tsup:
+        specifier: ^8.0.0
+        version: 8.5.1(@swc/core@1.15.43)(postcss@8.5.16)(typescript@5.9.3)(yaml@2.9.0)
+      typescript:
+        specifier: ^5.5.0
+        version: 5.9.3
+      unplugin-swc:
+        specifier: ^1.5.0
+        version: 1.5.9(@swc/core@1.15.43)(rollup@4.62.2)
+      vitest:
+        specifier: ^3.2.6
+        version: 3.2.6(@types/node@22.20.1)(yaml@2.9.0)
+
   packages/nestjs-typeorm-history:
     devDependencies:
       '@entity-history/typeorm':
@@ -649,6 +706,15 @@ packages:
     peerDependenciesMeta:
       reflect-metadata:
         optional: true
+
+  '@mikro-orm/nestjs@7.0.2':
+    resolution: {integrity: sha512-0iEr+YzhXQ8cZaAKzfJNijHHAL1Fg/PrauaMiwlZpaxOy0aMAPCQEwaSuxsz43X6XShrCv/TlE6kRn/QPIMzZA==}
+    engines: {node: '>= 22.17.0'}
+    peerDependencies:
+      '@mikro-orm/core': ^7.0.0 || ^7.0.0-dev.0
+      '@nestjs/common': ^11.0.5
+      '@nestjs/core': ^11.0.5
+      reflect-metadata: ^0.1.0 || ^0.2.0
 
   '@mikro-orm/postgresql@7.1.5':
     resolution: {integrity: sha512-UB57u6Pxgc5XIM+KdP9nYMDG3I7lPWBuFAGzLDwcSfvOJW1vvVM3J2Lqcj5Mv2V6ZPpqD9iQcE8kv0IpHfZwCw==}
@@ -3392,6 +3458,13 @@ snapshots:
     dependencies:
       '@mikro-orm/core': 7.1.5
     optionalDependencies:
+      reflect-metadata: 0.2.2
+
+  '@mikro-orm/nestjs@7.0.2(@mikro-orm/core@7.1.5)(@nestjs/common@11.1.28(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.1.28)(reflect-metadata@0.2.2)':
+    dependencies:
+      '@mikro-orm/core': 7.1.5
+      '@nestjs/common': 11.1.28(reflect-metadata@0.2.2)(rxjs@7.8.2)
+      '@nestjs/core': 11.1.28(@nestjs/common@11.1.28(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/platform-express@11.1.28)(reflect-metadata@0.2.2)(rxjs@7.8.2)
       reflect-metadata: 0.2.2
 
   '@mikro-orm/postgresql@7.1.5(@mikro-orm/core@7.1.5)':

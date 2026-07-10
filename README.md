@@ -15,6 +15,7 @@ Entity history for TypeORM and NestJS: every insert/update/delete on a tracked e
 | [`@entity-history/typeorm`](packages/typeorm-history) | TypeORM adapter: decorator, subscriber, query API. Usable standalone without NestJS. |
 | [`@entity-history/nestjs-typeorm`](packages/nestjs-typeorm-history) | NestJS module: request-scoped user attribution, DI-friendly history repositories. |
 | [`@entity-history/mikroorm`](packages/mikroorm-history) | MikroORM v7 adapter: same decorator and query API, `EventSubscriber`-based write path, cross-ORM-compatible shadow tables. |
+| [`@entity-history/nestjs-mikroorm`](packages/nestjs-mikroorm-history) | NestJS module for the MikroORM adapter: request-scoped user attribution, DI-friendly history repositories. |
 
 ## Features
 

@@ -4,7 +4,8 @@
     "packages/core/src/index.ts",
     "packages/typeorm-history/src/index.ts",
     "packages/nestjs-typeorm-history/src/index.ts",
-    "packages/mikroorm-history/src/index.ts"
+    "packages/mikroorm-history/src/index.ts",
+    "packages/nestjs-mikroorm-history/src/index.ts"
   ],
   "entryPointStrategy": "resolve",
   "out": "docs-site",

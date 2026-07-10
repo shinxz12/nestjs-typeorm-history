@@ -4,6 +4,7 @@
     "packages/core/src",
     "packages/typeorm-history/src",
     "packages/nestjs-typeorm-history/src",
-    "packages/mikroorm-history/src"
+    "packages/mikroorm-history/src",
+    "packages/nestjs-mikroorm-history/src"
   ]
 }

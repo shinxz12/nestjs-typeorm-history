@@ -42,6 +42,52 @@ importers:
         specifier: ^3.2.6
         version: 3.2.6(@types/node@22.20.1)(yaml@2.9.0)
 
+  packages/mikroorm-history:
+    dependencies:
+      '@entity-history/core':
+        specifier: workspace:^
+        version: link:../core
+    devDependencies:
+      '@mikro-orm/core':
+        specifier: ^7.1.5
+        version: 7.1.5
+      '@mikro-orm/decorators':
+        specifier: ^7.1.5
+        version: 7.1.5(@mikro-orm/core@7.1.5)(reflect-metadata@0.2.2)
+      '@mikro-orm/postgresql':
+        specifier: ^7.1.5
+        version: 7.1.5(@mikro-orm/core@7.1.5)
+      '@mikro-orm/sql':
+        specifier: ^7.1.5
+        version: 7.1.5(@mikro-orm/core@7.1.5)
+      '@mikro-orm/sqlite':
+        specifier: ^7.1.5
+        version: 7.1.5(@mikro-orm/core@7.1.5)
+      '@swc/core':
+        specifier: ^1.7.0
+        version: 1.15.43
+      '@testcontainers/postgresql':
+        specifier: ^10.13.0
+        version: 10.28.0
+      '@types/node':
+        specifier: ^22.0.0
+        version: 22.20.1
+      reflect-metadata:
+        specifier: ^0.2.2
+        version: 0.2.2
+      tsup:
+        specifier: ^8.0.0
+        version: 8.5.1(@swc/core@1.15.43)(postcss@8.5.16)(typescript@5.9.3)(yaml@2.9.0)
+      typescript:
+        specifier: ^5.5.0
+        version: 5.9.3
+      unplugin-swc:
+        specifier: ^1.5.0
+        version: 1.5.9(@swc/core@1.15.43)(rollup@4.62.2)
+      vitest:
+        specifier: ^3.2.6
+        version: 3.2.6(@types/node@22.20.1)(yaml@2.9.0)
+
   packages/nestjs-typeorm-history:
     devDependencies:
       '@entity-history/typeorm':
@@ -584,6 +630,43 @@ packages:
 
   '@manypkg/get-packages@1.1.3':
     resolution: {integrity: sha512-fo+QhuU3qE/2TQMQmbVMqaQ6EWbMhi4ABWP+O4AM1NqPBuy0OrApV5LO6BrrgnhtAHS2NH6RrVk9OL181tTi8A==}
+
+  '@mikro-orm/core@7.1.5':
+    resolution: {integrity: sha512-jYsR65PcFF+YKUlg/qytjP0PTyk558JvTKI1GzD6Vy/nshTkbcqMN5fDm2d5GJuxliPk0C8+M8tDn3GXeCAqow==}
+    engines: {node: '>= 22.17.0'}
+    peerDependencies:
+      dataloader: 2.2.3
+    peerDependenciesMeta:
+      dataloader:
+        optional: true
+
+  '@mikro-orm/decorators@7.1.5':
+    resolution: {integrity: sha512-CwK2n8hopvBmGJTKvb7P5iNYqEXln21AUUNUJG6BvS084V6lAB5PeluB2nCP2IomUcGaZZ80jbdg90hlOvprIg==}
+    engines: {node: '>= 22.17.0'}
+    peerDependencies:
+      '@mikro-orm/core': 7.1.5
+      reflect-metadata: ^0.1.0 || ^0.2.0
+    peerDependenciesMeta:
+      reflect-metadata:
+        optional: true
+
+  '@mikro-orm/postgresql@7.1.5':
+    resolution: {integrity: sha512-UB57u6Pxgc5XIM+KdP9nYMDG3I7lPWBuFAGzLDwcSfvOJW1vvVM3J2Lqcj5Mv2V6ZPpqD9iQcE8kv0IpHfZwCw==}
+    engines: {node: '>= 22.17.0'}
+    peerDependencies:
+      '@mikro-orm/core': 7.1.5
+
+  '@mikro-orm/sql@7.1.5':
+    resolution: {integrity: sha512-WeiyjzVrxx2WHafCFmhbfbNphPSXqN9+7USet6iNcc9EzKqN0ULPvQd555m+5Nh0tmkX151FwPMLm9/a2wG0ng==}
+    engines: {node: '>= 22.17.0'}
+    peerDependencies:
+      '@mikro-orm/core': 7.1.5
+
+  '@mikro-orm/sqlite@7.1.5':
+    resolution: {integrity: sha512-OJe3Ct9wlKhEo3mPs3wI8Dy/eJkNN5epq9f7jLxRU/+PLX4P4GlA4m3dH+yAG89vQb0O5Q1uz9TAhJwOK/vwOg==}
+    engines: {node: '>= 22.17.0'}
+    peerDependencies:
+      '@mikro-orm/core': 7.1.5
 
   '@nestjs/common@11.1.28':
     resolution: {integrity: sha512-bRImsxibie+AM7xjdwcrm/gr5YeacI65kSBNzTufa1Ib5iwziaY/lqMtRh9THq6pbV4e1HP9aI2ZxGUumnmaoQ==}
@@ -1217,6 +1300,10 @@ packages:
   better-sqlite3@11.10.0:
     resolution: {integrity: sha512-EwhOpyXiOEL/lKzHz9AW1msWFNzGc/z+LzeB3/jnFJpxu+th2yqvzsSWas1v9jgs9+xiXJcD5A8CJxAG2TaghQ==}
 
+  better-sqlite3@12.11.1:
+    resolution: {integrity: sha512-dq9AtApgg5PGFtBzPFSBl3HZQjHok5gaQCM6zh2Yk0aSmDCs1CbnVI8/HgASQkNKsWFpseIO9beg5xxpYhbIfA==}
+    engines: {node: 20.x || 22.x || 23.x || 24.x || 25.x || 26.x}
+
   bindings@1.5.0:
     resolution: {integrity: sha512-p2q/t/mhvuOj/UeLlV6566GD/guowlr0hHxClI0W9m7MWYkL1F0hLo+0Aexs9HSPCtR1SXQ0TD3MMKrXZajbiQ==}
 
@@ -1824,6 +1911,10 @@ packages:
   jsonfile@4.0.0:
     resolution: {integrity: sha512-m6F1R3z8jjlf2imQHS2Qez5sjKWQzbuuhuJ/FKYFRZvPE3PuHcSMVZzfsLhGVOkfd20obL5SWEBew5ShlquNxg==}
 
+  kysely@0.29.2:
+    resolution: {integrity: sha512-s6WVJyEZrbm6jhBpiKHsGHyePMrVQKJ85wZCFCr9W4QHv6WTjWIrdvTmO9hDEA3bNK0xkrE2DqrHsXMLWuZpQg==}
+    engines: {node: '>=22.0.0'}
+
   lazystream@1.0.1:
     resolution: {integrity: sha512-b94GiNHQNy6JNTrt5w6zNyffMrNkXZb3KTkCZJb2V1xaEGCk093vkZ2jk3tpaeP33/OiXC+WvK9AxUebnf5nbw==}
     engines: {node: '>= 0.6.3'}
@@ -2084,6 +2175,11 @@ packages:
   pg-connection-string@2.14.0:
     resolution: {integrity: sha512-XwWDGcLRGCXAR8F/AM5bG7Q+A3Wm2s6QeEjlOKZLlH3UYcguiqCWKyWXVag5TLTIjR7oOJUY8kcADaZgWPyLeg==}
 
+  pg-cursor@2.20.0:
+    resolution: {integrity: sha512-HP/EbUafheaUOs7DxlG6tda/rhmsX2hCTJJJ+gCnhljGyNEs6pBHddbNuomlW3DqEhP3zYD+GqBWkYnJPIZ4tA==}
+    peerDependencies:
+      pg: ^8
+
   pg-int8@1.0.1:
     resolution: {integrity: sha512-WCtabS6t3c8SkpDBUlb1kjOs7l66xsGdKpIPZsg4wR+B3+u9UAum2odSsF9tnvxg80h4ZxLWMy4pRjOsFIqQpw==}
     engines: {node: '>=4.0.0'}
@@ -2099,6 +2195,15 @@ packages:
   pg-types@2.2.0:
     resolution: {integrity: sha512-qTAAlrEsl8s4OiEQY69wDvcMIdQN6wdz5ojQiOy6YRMuynxenON0O5oCpJI6lshc6scgAY8qvJ2On/p+CXY0GA==}
     engines: {node: '>=4'}
+
+  pg@8.21.0:
+    resolution: {integrity: sha512-AUP1EYJuHraQGsVoCQVIcM7TEJVGtDzxWtGFZd8rds9d+CCXlU5Js1rYgfLNvxy9iJrpHjGrRjoi/3BT9fRyiA==}
+    engines: {node: '>= 16.0.0'}
+    peerDependencies:
+      pg-native: '>=3.0.1'
+    peerDependenciesMeta:
+      pg-native:
+        optional: true
 
   pg@8.22.0:
     resolution: {integrity: sha512-8wih1vVIBMxoUM2oB4soJsD9tDnDpLv4OXBJ+EJzFsvycD+lfyIreC2gGHq78f8jbLLt+bvlPTFdFZfJkOuzAA==}
@@ -2164,6 +2269,10 @@ packages:
     resolution: {integrity: sha512-VpZrUqU5A69eQyW2c5CA1jtLecCsN2U/bD6VilrFDWq5+5UIEVO7nazS3TEcHf1zuPYO/sqGvUvW62g86RXZuA==}
     engines: {node: '>=4'}
 
+  postgres-array@3.0.4:
+    resolution: {integrity: sha512-nAUSGfSDGOaOAEGwqsRY27GPOea7CNipJPOA7lPbdEpx5Kg3qzdP0AaWC5MlhTWV9s4hFX39nomVZ+C4tnGOJQ==}
+    engines: {node: '>=12'}
+
   postgres-bytea@1.0.1:
     resolution: {integrity: sha512-5+5HqXnsZPE65IJZSMkZtURARZelel2oXUEO8rH83VS/hxH5vv1uHquPg5wZs8yMAfdv971IU+kcPUczi7NVBQ==}
     engines: {node: '>=0.10.0'}
@@ -2172,9 +2281,17 @@ packages:
     resolution: {integrity: sha512-suDmjLVQg78nMK2UZ454hAG+OAW+HQPZ6n++TNDUX+L0+uUlLywnoxJKDou51Zm+zTCjrCl0Nq6J9C5hP9vK/Q==}
     engines: {node: '>=0.10.0'}
 
+  postgres-date@2.1.0:
+    resolution: {integrity: sha512-K7Juri8gtgXVcDfZttFKVmhglp7epKb1K4pgrkLxehjqkrgPhfG6OO8LHLkfaqkbpjNRnra018XwAr1yQFWGcA==}
+    engines: {node: '>=12'}
+
   postgres-interval@1.2.0:
     resolution: {integrity: sha512-9ZhXKM/rw350N1ovuWHbGxnGh/SNJ4cnxHiM0rxE4VN41wsg8P8zWn9hv/buK00RP4WvlOyr/RBDiptyxVbkZQ==}
     engines: {node: '>=0.10.0'}
+
+  postgres-interval@4.0.2:
+    resolution: {integrity: sha512-EMsphSQ1YkQqKZL2cuG0zHkmjCCzQqQ71l2GXITqRwjhRleCdv00bDk/ktaSi0LnlaPzAc3535KTrjXsTdtx7A==}
+    engines: {node: '>=12'}
 
   prebuild-install@7.1.3:
     resolution: {integrity: sha512-8Mf2cbV7x1cXPUILADGI3wuhfqWvtiLA1iclTDbFRZkgRQS0NqsPZphna9V+HyTEadheuPmjaJMsbzKQFOzLug==}
@@ -3269,6 +3386,39 @@ snapshots:
       globby: 11.1.0
       read-yaml-file: 1.1.0
 
+  '@mikro-orm/core@7.1.5': {}
+
+  '@mikro-orm/decorators@7.1.5(@mikro-orm/core@7.1.5)(reflect-metadata@0.2.2)':
+    dependencies:
+      '@mikro-orm/core': 7.1.5
+    optionalDependencies:
+      reflect-metadata: 0.2.2
+
+  '@mikro-orm/postgresql@7.1.5(@mikro-orm/core@7.1.5)':
+    dependencies:
+      '@mikro-orm/core': 7.1.5
+      '@mikro-orm/sql': 7.1.5(@mikro-orm/core@7.1.5)
+      kysely: 0.29.2
+      pg: 8.21.0
+      pg-cursor: 2.20.0(pg@8.21.0)
+      postgres-array: 3.0.4
+      postgres-date: 2.1.0
+      postgres-interval: 4.0.2
+    transitivePeerDependencies:
+      - pg-native
+
+  '@mikro-orm/sql@7.1.5(@mikro-orm/core@7.1.5)':
+    dependencies:
+      '@mikro-orm/core': 7.1.5
+      kysely: 0.29.2
+
+  '@mikro-orm/sqlite@7.1.5(@mikro-orm/core@7.1.5)':
+    dependencies:
+      '@mikro-orm/core': 7.1.5
+      '@mikro-orm/sql': 7.1.5(@mikro-orm/core@7.1.5)
+      better-sqlite3: 12.11.1
+      kysely: 0.29.2
+
   '@nestjs/common@11.1.28(reflect-metadata@0.2.2)(rxjs@7.8.2)':
     dependencies:
       file-type: 21.3.4
@@ -3804,6 +3954,11 @@ snapshots:
       is-windows: 1.0.2
 
   better-sqlite3@11.10.0:
+    dependencies:
+      bindings: 1.5.0
+      prebuild-install: 7.1.3
+
+  better-sqlite3@12.11.1:
     dependencies:
       bindings: 1.5.0
       prebuild-install: 7.1.3
@@ -4473,6 +4628,8 @@ snapshots:
     optionalDependencies:
       graceful-fs: 4.2.11
 
+  kysely@0.29.2: {}
+
   lazystream@1.0.1:
     dependencies:
       readable-stream: 2.3.8
@@ -4677,7 +4834,15 @@ snapshots:
 
   pg-connection-string@2.14.0: {}
 
+  pg-cursor@2.20.0(pg@8.21.0):
+    dependencies:
+      pg: 8.21.0
+
   pg-int8@1.0.1: {}
+
+  pg-pool@3.14.0(pg@8.21.0):
+    dependencies:
+      pg: 8.21.0
 
   pg-pool@3.14.0(pg@8.22.0):
     dependencies:
@@ -4692,6 +4857,16 @@ snapshots:
       postgres-bytea: 1.0.1
       postgres-date: 1.0.7
       postgres-interval: 1.2.0
+
+  pg@8.21.0:
+    dependencies:
+      pg-connection-string: 2.14.0
+      pg-pool: 3.14.0(pg@8.21.0)
+      pg-protocol: 1.15.0
+      pg-types: 2.2.0
+      pgpass: 1.0.5
+    optionalDependencies:
+      pg-cloudflare: 1.4.0
 
   pg@8.22.0:
     dependencies:
@@ -4740,13 +4915,19 @@ snapshots:
 
   postgres-array@2.0.0: {}
 
+  postgres-array@3.0.4: {}
+
   postgres-bytea@1.0.1: {}
 
   postgres-date@1.0.7: {}
 
+  postgres-date@2.1.0: {}
+
   postgres-interval@1.2.0:
     dependencies:
       xtend: 4.0.2
+
+  postgres-interval@4.0.2: {}
 
   prebuild-install@7.1.3:
     dependencies:

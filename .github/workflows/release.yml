@@ -27,7 +27,9 @@ jobs:
       - run: pnpm -F nestjs-typeorm-history build
       - uses: changesets/action@v1
         with:
-          publish: pnpm -r publish
+          # `changeset publish` (not `pnpm -r publish`) so the action can parse
+          # published versions and create git tags + GitHub Releases
+          publish: pnpm changeset publish
           version: pnpm changeset version
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

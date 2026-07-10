@@ -1,0 +1,8 @@
+node_modules/
+dist/
+*.tsbuildinfo
+docs-site/
+
+# local-only / assistant artifacts
+.claude/settings.local.json
+docs/superpowers/

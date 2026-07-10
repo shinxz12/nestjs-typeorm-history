@@ -1,0 +1,16 @@
+{
+  "name": "typeorm-history-workspace",
+  "private": true,
+  "scripts": {
+    "build": "pnpm -r build",
+    "test": "pnpm -r test",
+    "changeset": "changeset",
+    "docs:build": "typedoc"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.31.0",
+    "@types/node": "^22.20.1",
+    "typedoc": "^0.28.20",
+    "typescript": "^5.9.3"
+  }
+}

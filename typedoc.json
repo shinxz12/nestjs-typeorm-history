@@ -1,0 +1,15 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "entryPoints": [
+    "packages/typeorm-history/src/index.ts",
+    "packages/nestjs-typeorm-history/src/index.ts"
+  ],
+  "entryPointStrategy": "resolve",
+  "out": "docs-site",
+  "name": "typeorm-entity-history",
+  "readme": "README.md",
+  "excludePrivate": true,
+  "excludeInternal": true,
+  "categorizeByGroup": true,
+  "tsconfig": "tsconfig.typedoc.json"
+}

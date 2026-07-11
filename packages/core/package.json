@@ -1,6 +1,6 @@
 {
   "name": "@entity-history/core",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "ORM-agnostic core for entity-history adapters (registry, context, diff)",
   "license": "MIT",
   "repository": {
@@ -12,8 +12,12 @@
   "bugs": "https://github.com/shinxz12/entity-history/issues",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "files": ["dist"],
-  "engines": { "node": ">=18" },
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
     "build": "tsup src/index.ts --dts --format cjs",
     "test": "vitest run"

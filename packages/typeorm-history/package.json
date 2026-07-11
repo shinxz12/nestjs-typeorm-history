@@ -1,6 +1,6 @@
 {
-  "name": "typeorm-entity-history",
-  "version": "0.1.0",
+  "name": "@entity-history/typeorm",
+  "version": "0.2.0",
   "description": "Shadow-table entity history (audit trail) for TypeORM",
   "license": "MIT",
   "repository": {
@@ -19,6 +19,7 @@
     "test": "vitest run",
     "test:pg": "vitest run -c vitest.integration.config.ts --testTimeout=120000"
   },
+  "dependencies": { "@entity-history/core": "workspace:^" },
   "peerDependencies": { "typeorm": ">=0.3.20" },
   "devDependencies": {
     "@swc/core": "^1.7.0",

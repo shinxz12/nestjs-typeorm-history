@@ -26,7 +26,7 @@ export function getHistoryRepositoryToken(entity: Function, dataSource?: History
   const owner = tokenOwners.get(token);
   if (owner && owner !== entity)
     throw new Error(
-      `[nestjs-typeorm-history] two different classes named '${entity.name}' resolve to the same ` +
+      `[entity-history] two different classes named '${entity.name}' resolve to the same ` +
         `injection token '${token}'. Rename one of the classes.`,
     );
   tokenOwners.set(token, entity);

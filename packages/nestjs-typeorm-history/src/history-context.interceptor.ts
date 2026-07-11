@@ -1,6 +1,6 @@
 import { CallHandler, ExecutionContext, Inject, Injectable, NestInterceptor, Optional } from '@nestjs/common';
 import { Observable } from 'rxjs';
-import { withHistoryContext } from 'typeorm-entity-history';
+import { withHistoryContext } from '@entity-history/typeorm';
 import { HISTORY_MODULE_OPTIONS } from './tokens';
 import type { HistoryModuleOptions } from './history.module';
 

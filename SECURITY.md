@@ -6,7 +6,7 @@
 | ------- | --------- |
 | latest 0.x | ✅ |
 
-Both `typeorm-entity-history` and `nestjs-typeorm-history` follow this policy.
+Both `@entity-history/typeorm`, `@entity-history/nestjs-typeorm`, and `@entity-history/core` follow this policy.
 
 ## Reporting a Vulnerability
 

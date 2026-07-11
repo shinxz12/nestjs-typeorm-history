@@ -2,8 +2,8 @@
 
 Thanks for your interest in contributing! This repo is a pnpm monorepo with two packages:
 
-- `packages/typeorm-history` → [`typeorm-entity-history`](https://www.npmjs.com/package/typeorm-entity-history) (core, framework-agnostic)
-- `packages/nestjs-typeorm-history` → [`nestjs-typeorm-history`](https://www.npmjs.com/package/nestjs-typeorm-history) (NestJS wrapper)
+- `packages/typeorm-history` → [`@entity-history/typeorm`](https://www.npmjs.com/package/@entity-history/typeorm) (core, framework-agnostic)
+- `packages/nestjs-typeorm-history` → [`@entity-history/nestjs-typeorm`](https://www.npmjs.com/package/@entity-history/nestjs-typeorm) (NestJS wrapper)
 
 ## Development setup
 
@@ -13,7 +13,7 @@ Requirements: Node.js >= 18, [pnpm](https://pnpm.io), and Docker (only for the P
 pnpm install
 pnpm build                                # build both packages (core first)
 pnpm test                                 # both packages, in-memory sqlite — fast, no Docker
-pnpm -F typeorm-entity-history test:pg    # postgres integration suite (Testcontainers, needs Docker)
+pnpm -F @entity-history/typeorm test:pg    # postgres integration suite (Testcontainers, needs Docker)
 ```
 
 The NestJS package depends on the core package via `workspace:*`, so build the core package before building or testing the wrapper.

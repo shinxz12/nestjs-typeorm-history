@@ -24,8 +24,7 @@ jobs:
           node-version: 22
           cache: pnpm
       - run: pnpm install --frozen-lockfile
-      - run: pnpm -F typeorm-entity-history build
-      - run: pnpm -F nestjs-typeorm-history build
+      - run: pnpm -r build
       - run: pnpm docs:build
       - uses: actions/configure-pages@v6
       - uses: actions/upload-pages-artifact@v3

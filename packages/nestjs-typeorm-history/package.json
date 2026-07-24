@@ -43,7 +43,7 @@
     "rxjs": "^7.8.0",
     "supertest": "^7.0.0",
     "tsup": "^8.0.0",
-    "typeorm": "^0.3.20",
+    "typeorm": "^0.3.31",
     "@entity-history/typeorm": "workspace:*",
     "typescript": "^5.5.0",
     "unplugin-swc": "^1.5.0",
